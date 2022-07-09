@@ -1,5 +1,3 @@
-// Copyright [2022] <lavadama, rosiotam>
-
 #include <math.h>
 #include <stdarg.h>
 #include <stdio.h>
