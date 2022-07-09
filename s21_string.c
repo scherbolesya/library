@@ -213,9 +213,9 @@ char *s21_strerror(int errnum) {
       str[len_x++] = '-';
     }
     str[len_x] = '\0';
-
-    char c;
+    
     for (int i = len_x - 1, j = 0; i > j; i--, j++) {
+      char c;
       c = str[j];
       str[j] = str[i];
       str[i] = c;
@@ -546,6 +546,7 @@ char *sprintf_cs(spec_struct *options, va_list ap) {
   char s[] = "%";
   char *str = &s[0];
   char *out_str = S21_NULL;
+  char null_str[7] = "";
   int flag_change_null_str = 0;
   if (options->specificator == 'c') {
     str[0] = (char)va_arg(ap, int);
@@ -553,7 +554,6 @@ char *sprintf_cs(spec_struct *options, va_list ap) {
   if (options->specificator == 's') {
     str = va_arg(ap, char *);
     if (str == S21_NULL) {
-      char null_str[6] = "";
       s21_strcpy(null_str, "(null)");
       str = null_str;
       flag_change_null_str = 1;
